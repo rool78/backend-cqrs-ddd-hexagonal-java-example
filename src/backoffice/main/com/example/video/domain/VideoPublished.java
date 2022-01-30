@@ -3,7 +3,7 @@ package com.example.video.domain;
 import com.example.shared.domain.DomainEvent;
 
 public final class VideoPublished implements DomainEvent {
-    private static final String FULL_QUALIFIED_EVENT_NAME = "codelytv.video.video.event.1.video.published";
+    private static final String FULL_QUALIFIED_EVENT_NAME = "example.video.video.event.1.video.published";
 
     private final String title;
     private final String description;

@@ -3,7 +3,7 @@ package com.example.notification.application.create;
 import com.example.video.domain.VideoPublished;
 import com.example.shared.application.DomainEventSubscriber;
 
-public class SendPushToSubscribersOnVideoPublished implements DomainEventSubscriber<VideoPublished> {
+public final class SendPushToSubscribersOnVideoPublished implements DomainEventSubscriber<VideoPublished> {
     @Override
     public Class<VideoPublished> subscribedTo() {
         return VideoPublished.class;
