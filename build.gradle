@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+allprojects {
+    apply plugin: 'java'
+
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceSets {
+        main {
+            java { srcDirs = [ 'main' ] }
+        }
+        test {
+            java { srcDirs = [ 'test' ] }
+        }
+    }
+
+    task hello {
+        doLast { task ->
+            println "I'm $task.project.name"
+        }
+    }
+}
+
+subprojects {
+    group = "com.example.${rootProject.name}"
+
+    dependencies {
+        // Prod
+        implementation 'io.projectreactor:reactor-bus:2.0.8.RELEASE'
+
+        // Test
+        testCompile "org.mockito:mockito-core:2.+"
+        testCompile 'org.junit.jupiter:junit-jupiter-api:5.+'
+        testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.+'
+    }
+
+    test {
+        useJUnitPlatform()
+
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+
+        reports {
+            html.enabled = true
+        }
+    }
+}
