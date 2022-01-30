@@ -3,10 +3,15 @@ buildscript {
         mavenCentral()
         jcenter()
     }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:2.2.1.RELEASE')
+    }
 }
 
 allprojects {
     apply plugin: 'java'
+//    apply plugin: 'io.spring.dependency-management'
+//    apply plugin: 'org.springframework.boot'
 
     sourceCompatibility = 11
     targetCompatibility = 11
@@ -37,6 +42,11 @@ subprojects {
     dependencies {
         // Prod
         implementation 'io.projectreactor:reactor-bus:2.0.8.RELEASE'
+
+//        implementation 'org.springframework:spring-orm:5.2.2.RELEASE'
+//        implementation 'org.springframework:spring-context-support:5.2.1.RELEASE'
+//        implementation 'org.springframework.boot:spring-boot-starter-amqp'
+        implementation 'org.springframework.boot:spring-boot-starter-web:2.1.8.RELEASE'
 
         // Test
         testCompile "org.mockito:mockito-core:2.+"
