@@ -17,7 +17,6 @@ public class ReactorEventBus implements com.example.shared.domain.EventBus {
 
     public ReactorEventBus(final Set<DomainEventSubscriber> subscribers) {
         bus = EventBus.create();
-
         subscribers.forEach(this::registerOnEventBus);
     }
 
@@ -29,13 +28,11 @@ public class ReactorEventBus implements com.example.shared.domain.EventBus {
     private void publish(final DomainEvent event) {
         Class<? extends DomainEvent> eventIdentifier = event.getClass();
         Event<DomainEvent> wrappedEvent = Event.wrap(event);
-
         bus.notify(eventIdentifier, wrappedEvent);
     }
 
     private void registerOnEventBus(final DomainEventSubscriber subscriber) {
         final Selector eventIdentifier = $(subscriber.subscribedTo());
-
         bus.on(eventIdentifier, eventConsumer(subscriber));
     }
 
