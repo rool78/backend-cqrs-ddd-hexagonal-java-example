@@ -23,6 +23,17 @@ public final class Video extends AggregateRoot {
         return video;
     }
 
+    //TODO watch out those getters...
+
+
+    public VideoTitle getTitle() {
+        return title;
+    }
+
+    public VideoDescription getDescription() {
+        return description;
+    }
+
     @Override
     public String toString() {
         return "Video{" +
